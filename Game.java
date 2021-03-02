@@ -57,6 +57,11 @@ public class Game {
         pool.scheduleAtFixedRate(jonte, 15, 25, TimeUnit.SECONDS);
         pool.scheduleAtFixedRate(simon, 10, 30, TimeUnit.SECONDS);
         
+	try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         
         Inventory inventory = new Inventory(2);
         inventory.addObject(smurf);
