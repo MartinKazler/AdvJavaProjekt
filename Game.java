@@ -23,7 +23,7 @@ public class Game {
 
        
         GameObject smurf = new GameObject("smurf",true);
-        GameObject lampa = new GameObject("Taklampa", false);
+        GameObject lampa = new GameObject("taklampa", false);
         GameObject banana = new GameObject("banana",false);
         GameObject ponny = new GameObject("ponny",false);
        
