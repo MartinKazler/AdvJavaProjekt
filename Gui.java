@@ -20,14 +20,11 @@ import java.awt.event.ActionListener;
         private JButton button;
         static JLabel text = new JLabel();
 
-        
-
 
         public Gui(){
             Font font= new Font("ariel", Font.PLAIN, 15);
             Font fontx= new Font("ariel", Font.PLAIN, 14);
             Font fontz= new Font("ariel", Font.ITALIC, 20);
-
 
             this.gotCommand = false;
             this.command = "";
@@ -43,8 +40,7 @@ import java.awt.event.ActionListener;
             this.panel.setBackground(Color.GRAY);
             text.setFont(fontx);            
           
-
-        
+            
             input.setFont(font);
             Room1.setFont(fontx);
             Room2.setFont(fontx);
@@ -61,7 +57,6 @@ import java.awt.event.ActionListener;
 
         }
 
-        // Returnera det senaste commitade kommandot
         public String getCommand() {
             if (this.gotCommand) {
                 return this.command;
@@ -70,7 +65,6 @@ import java.awt.event.ActionListener;
 
         }
 
-        // Här kan man updatera respektive fält:
         public void setShowRoom1(String roomDescription) {
             this.Room1.setText(roomDescription);
         }
@@ -91,7 +85,6 @@ import java.awt.event.ActionListener;
             this.inventory.setText(i.toString());
         }
 
-        // *******************
         public void setShowPlayer(Person p, Room room, int position) {
 
             if (position == 0) {
@@ -109,7 +102,6 @@ import java.awt.event.ActionListener;
             }
         }
 
-        // Nedantåenda spaghetti är inte vacker...
 
         public void gotCommand() {
             this.gotCommand = false;
@@ -121,26 +113,24 @@ import java.awt.event.ActionListener;
             this.panel.add(Room2);
             this.panel.add(Room3);
             this.panel.add(Room4);
-
             this.panel.add(input);
             this.panel.add(inventory);
             this.panel.add(button);
 
         }
-
+        public JTextArea getInventory() {
+            return inventory;
+        }
         private void setUpElements() {
             this.panel = new JPanel(new GridLayout(4, 4));
-            // this.showRoom = new JTextArea("Room: ");
-            this.Room1 = new JTextArea("r1: \n");// nunu
-            this.Room2 = new JTextArea("r2: \n");// nunu
-            this.Room3 = new JTextArea("r3: \n");// nunu
-            this.Room4 = new JTextArea("r4: \n");// nunu
+            this.Room1 = new JTextArea("r1: \n");
+            this.Room2 = new JTextArea("r2: \n");
+            this.Room3 = new JTextArea("r3: \n");
+            this.Room4 = new JTextArea("r4: \n");
 
-            // this.showPersons = new JTextArea("Persons");
             this.inventory = new JTextArea("Inventory");
             this.input = new JTextField("");
 
-            // this.showPersons.setEditable(false);
             this.Room1.setEditable(false);
             this.Room2.setEditable(false);
             this.Room3.setEditable(false);
