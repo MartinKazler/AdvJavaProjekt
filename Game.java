@@ -35,7 +35,7 @@ public class Game {
         room4.addObject(null); room4.addObject(ponny); room4.addObject(box);
 
 
-        Person newPlayer1 = new Person("You",0, gui);        
+        Person newPlayer1 = new Person("Ola",0, gui);        
        
         Person jakob = new Person("Jakob", 4, gui);
         room1.addNpc(jakob);
