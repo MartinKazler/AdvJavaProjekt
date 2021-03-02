@@ -9,7 +9,6 @@ public class Container extends GameObject{
         this.inventory = new Inventory(3);
         this.locked = locked;
     }
-
     public Inventory getInventory(){
         return this.inventory;
     }
