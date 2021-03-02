@@ -82,7 +82,7 @@ import java.awt.event.ActionListener;
         }
 
         public void setShowInventory(Inventory b) {
-            this.inventory.setText("Theres is 3 NPC´s (S,J,J) Check your console in the background to know there postion");
+            this.inventory.setText("You are Ola, Theres is 3 NPC´s (S,J,J) Check your console in the background to know there postion");
         }
 
         public void setShowPlayer(Person p, Room room, int position) {
