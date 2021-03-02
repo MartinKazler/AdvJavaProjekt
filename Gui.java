@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 
-    public class Gui extends JFrame {
+    public class Gui extends JFrame{
 
         private static final long serialVersionUID = 1L;  
          JPanel panel;
@@ -81,8 +81,8 @@ import java.awt.event.ActionListener;
             this.Room4.setText(roomDescription);
         }
 
-        public void setShowInventory(Inventory i) {
-            this.inventory.setText(i.toString());
+        public void setShowInventory(Inventory b) {
+            this.inventory.setText("Theres is 3 NPC´s (S,J,J) Check your console in the background to know there postion");
         }
 
         public void setShowPlayer(Person p, Room room, int position) {
