@@ -1,16 +1,18 @@
 package Projekt2;
 
 import java.awt.Color;
+import java.util.Arrays;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class Game {
-    private Gui gui;
+	private Gui gui;
     private Room room1, room2, room3, room4;
-    private Room map[] ;
+    private Room map[];
+    private Person[] persons;
 
     public Game(){
         
-
-        //Skapa rum!
         room1 = new Room("\nStarting Room"," \nLooks kinda dull, gray walls and just a chair on the right corner and a");
         room2 = new Room("\nBlue Room", "\nAs the rooms says everything is blue, there is some Smurf dummies spread across the room");
         room3 = new Room("\nYellow Room", "\nWell would you look at that everything is Yellow now, Hmmm why do i smell bananas in here?");
@@ -19,7 +21,7 @@ public class Game {
         map = new Room[4];
         map[0] = room1;  map[1] = room2; map[2] = room3; map[3] = room4;
 
-        //Gameobjects
+       
         GameObject smurf = new GameObject("smurf",true);
         GameObject lampa = new GameObject("Taklampa", false);
         GameObject banana = new GameObject("banana",false);
@@ -33,14 +35,36 @@ public class Game {
         room4.addObject(null); room4.addObject(ponny); room4.addObject(box);
 
 
-        Person newPlayer1 = new Person("You");        
-
+        Person newPlayer1 = new Person("You",0, gui);        
+       
+        Person jakob = new Person("Jakob", 4, gui);
+        room1.addNpc(jakob);
+        
+        Person jonte = new Person("Jonte", 1, gui);
+        room2.addNpc(jonte);
+        
+        Person simon = new Person("Simon", 2, gui);
+        room3.addNpc(simon);
+       
+        
+        persons = new Person[3];
+        persons[0] = jakob;
+        persons[1] = jonte;
+        persons[2] = simon;
+        
+        ScheduledThreadPoolExecutor pool = new ScheduledThreadPoolExecutor(10);
+        pool.scheduleAtFixedRate(jakob, 20, 20, TimeUnit.SECONDS);
+        pool.scheduleAtFixedRate(jonte, 15, 25, TimeUnit.SECONDS);
+        pool.scheduleAtFixedRate(simon, 10, 30, TimeUnit.SECONDS);
+        
+        
         Inventory inventory = new Inventory(2);
         inventory.addObject(smurf);
         inventory.addObject(lampa);
         inventory.addObject(ponny);
         inventory.addObject(banana);
 
+        
         this.gui = new Gui();
 
         boolean gameon=true;        
@@ -51,13 +75,12 @@ public class Game {
             String command = gui.getCommand();
             if (!command.equals("-1")) {
 
+                 
                 if (command.equals("1")  ) {
                    if (rumIndex == 1 ){
                       rumIndex = 0;
                       gui.panel.setBackground(Color.GRAY);
-                    }
-                   
-                    
+                    } 
                 }
 
                 if (command.equals("2")) {
@@ -81,12 +104,7 @@ public class Game {
                                 rumIndex = 3;
                                 gui.panel.setBackground(Color.PINK);
                                 }
-                            
-                       
                          }
-
-                
-                //take 
                 if (command.contains("Take")  ) {
                     
                        if (command.contains("banana")  ) {
@@ -106,9 +124,7 @@ public class Game {
                             newPlayer1.getInventory().addObject(ponny);
                          }
                 
-                }             
-
-        
+                } 
                 if (command.contains("Drop")  ) {
 
                     if (command.contains("banana")  ) {
@@ -129,34 +145,43 @@ public class Game {
                     }
                 }
                 
-              
+                if (command.equals("slut")  ) {
+                    
+                    gui.setMessage("Game over");
+                    gameon=false;
+  
+                }
+                            
             } 
             
-        
-
                 gui.setShowPlayer(newPlayer1,map[rumIndex],rumIndex );
                 gui.setShowInventory(inventory);
-
-
+                
                 gui.setShowRoom1("\n "+map[0]);
                 gui.setShowPlayer(newPlayer1,map[rumIndex],rumIndex );
-
-
+               
                 gui.setShowRoom2("\n "+map[1]);
                 gui.setShowPlayer(newPlayer1,map[rumIndex],rumIndex );
-
-
+                 
                 gui.setShowRoom3("\n "+map[2]);
                 gui.setShowPlayer(newPlayer1,map[rumIndex],rumIndex );
-
-
+              
                 gui.setShowRoom4("\n "+map[3]);
                 gui.setShowPlayer(newPlayer1,map[rumIndex],rumIndex );
-        }
+               
+                gui.setMessage("Game over");
 
- 
+        } 
     }
 
-
+    public Person[] getPersonsInRoom ( int index){
+        Person[] inRoom = Arrays.stream(persons).filter(person -> {
+            if (person.getPosition() == index) {
+                return true;
+            }
+            return false;
+        }).toArray(Person[]::new);
+        return inRoom;
+    }
 
 }
