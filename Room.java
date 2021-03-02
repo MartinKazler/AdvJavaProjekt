@@ -1,5 +1,7 @@
 package Projekt2;
 
+import Projekt.Person;
+
 public class Room  {
     private String name;
     private String description;
@@ -12,25 +14,23 @@ public class Room  {
         this.description= roomDescription;
         this.inventory = new Inventory(4);
     }
-    public void addNpc(Person person) {
+    public boolean addNpc(Person person){
+        int i = getFirstEmptyIndex();
+         if  (i == -1){
+             return false;
+         }
+         this.person[i] = person;
+         return true;
+     }
+    private int getFirstEmptyIndex(){
 
-        this.person[0] = person; 
-    }
-
-    public Person getPersons(){
-        return this.person[0];
-    }
-    public void addObject(GameObject go){
-        this.inventory.addObject(go);
-    }
-        //remove 
-        public void removeObject(GameObject go) {
-             this.inventory.removeObject(go);
-
-        }
-        public String toString(){
-            return name+" : "+description +"\n" +inventory;
-        }
-
-
-}
+        for (int i = 0; i<this.person.length;i++){
+             if (this.person[i] == null){
+                 return i;
+             }
+         }
+         return -1;
+     }
+    
+    
+    
