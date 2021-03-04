@@ -54,6 +54,9 @@ public class Room  {
         public Inventory getInventory(){
             return this.inventory;
         }
-		
+		public void addNpc(Projekt2.Person simon) {
+			// TODO Auto-generated method stub
+			
+		}
 
 }
