@@ -17,6 +17,5 @@ public class Update implements Runnable {
         
         handler.toString();
 
-
      }
 }
