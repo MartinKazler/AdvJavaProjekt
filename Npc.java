@@ -1,6 +1,5 @@
 package Projekt2;
 
-
 public abstract class Npc {
     String name;
     Inventory inventory;
