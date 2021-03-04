@@ -18,8 +18,7 @@ public class Person extends Npc implements Runnable{
     public int getPosition() {
         return position;
     }
-    
-    
+   
     @Override
    public void run(){
         move();
