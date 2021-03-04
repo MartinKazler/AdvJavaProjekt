@@ -34,3 +34,26 @@ public class Room  {
     
     
     
+    
+    public Person getPersons(){
+        return this.person[0];
+    }
+    public void addObject(GameObject go){
+        this.inventory.addObject(go);
+        getInventory();
+    }
+        //remove 
+        public void removeObject(GameObject go) {
+             this.inventory.removeObject(go);
+             getInventory();
+
+        }
+        public String toString(){
+            return name+" : "+description +"\n" +inventory;
+        }
+        public Inventory getInventory(){
+            return this.inventory;
+        }
+		
+
+}
