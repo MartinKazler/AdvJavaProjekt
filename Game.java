@@ -57,7 +57,8 @@ public class Game {
         pool.scheduleAtFixedRate(jonte, 15, 25, TimeUnit.SECONDS);
         pool.scheduleAtFixedRate(simon, 10, 30, TimeUnit.SECONDS);
         
-	try {
+        
+        try {
             Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
