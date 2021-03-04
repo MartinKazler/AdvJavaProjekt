@@ -1,4 +1,5 @@
 package Projekt2;
+
 public class Container extends GameObject{
 
     private Inventory inventory;
