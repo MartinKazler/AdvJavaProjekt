@@ -2,8 +2,6 @@ package Projekt2;
 
 import javax.swing.*;
 import java.awt.Color;
-
-
 import java.awt.*;
 import java.awt.event.ActionListener;
 
