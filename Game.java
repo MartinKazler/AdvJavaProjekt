@@ -198,11 +198,9 @@ public class Game {
         sleep(1000);
         switch(action) {
         case 1:
-            // Switch room
             selectedNpc.move();
             break;
         case 2:
-            // Pick up some random shit
             if(selectedNpc.getInventory().getFirstObject() == null && map[selectedNpc.getPosition()-1].getInventory().getFirstObject() != null) {
                 GameObject objectToGet = map[selectedNpc.getPosition()-1].getInventory().getFirstObject();
                 selectedNpc.takeRandomItemFromRoom(objectToGet);
@@ -210,17 +208,13 @@ public class Game {
             }
             break;
         case 3:
-            // Drop some random shit
             if(selectedNpc.getInventory().getFirstObject() != null && map[selectedNpc.getPosition()-1].getInventory().getFirstEmptyIndex() != -1) {
                 GameObject objectToDrop = selectedNpc.getInventory().getFirstObject();
                 selectedNpc.dropItemInRoom(objectToDrop);
                 map[selectedNpc.getPosition()-1].getInventory().addObject(objectToDrop);
                 break;
             }
-//        case 4:
-//            // Say special phrase
-//            System.out.println("Other thing");
-//            break;
+
         }
     }
    
