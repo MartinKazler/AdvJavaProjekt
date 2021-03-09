@@ -1,62 +1,40 @@
 package Projekt2;
 
-import Projekt.Person;
+import java.util.stream.Stream;
 
-public class Room  {
+public class Room {
     private String name;
     private String description;
     private Inventory inventory;
     private Person[] person;
-
-    public Room(String roomName, String roomDescription){
-        this.person = new Person[5];
+    private Gui gui;
+    public Room(String roomName, String roomDescription, Projekt2.Gui g){
+        this.gui=g;
+        this.person = new Projekt2.Person[5];
         this.name = roomName;
         this.description= roomDescription;
-        this.inventory = new Inventory(4);
-    }
-    public boolean addNpc(Person person){
-        int i = getFirstEmptyIndex();
-         if  (i == -1){
-             return false;
-         }
-         this.person[i] = person;
-         return true;
-     }
-    private int getFirstEmptyIndex(){
+        this.inventory = new Projekt2.Inventory(3,gui);
 
-        for (int i = 0; i<this.person.length;i++){
-             if (this.person[i] == null){
-                 return i;
-             }
-         }
-         return -1;
-     }
-    
-    
-    
-    
-    public Person getPersons(){
-        return this.person[0];
+    }
+    public void addNpc(Projekt2.Person person) {
+
+        this.person = Stream.concat(Stream.of(this.person),Stream.of(person)).toArray(Projekt2.Person[]::new); //TODO Fixa fler personer
+    }
+    public Person[] getPersons(){
+        return this.person;
     }
     public void addObject(GameObject go){
         this.inventory.addObject(go);
-        getInventory();
     }
-        //remove 
-        public void removeObject(GameObject go) {
-             this.inventory.removeObject(go);
-             getInventory();
+    public void setPerson(Person[] person) {
+        this.person = person;
+    }
+    public Inventory getInventory(){
+        return this.inventory;
+    }
 
-        }
-        public String toString(){
-            return name+" : "+description +"\n" +inventory;
-        }
-        public Inventory getInventory(){
-            return this.inventory;
-        }
-		public void addNpc(Projekt2.Person simon) {
-			// TODO Auto-generated method stub
-			
-		}
+    public String toString(){
+        return name+" : "+description +"\n" +inventory;
+    }
 
 }

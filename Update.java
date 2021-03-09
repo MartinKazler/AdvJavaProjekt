@@ -1,21 +1,10 @@
 package Projekt2;
 
-import java.util.logging.Handler;
-
 public class Update implements Runnable {
-    private Gui gui;
-    private Handler handler;
-
-    public Update(Gui g) {
-        this.gui = g;
-        
+    public Update(Gui gui) {
     }
 
     @Override
     public void run() {
-        gui.update(null);
-        
-        handler.toString();
-
-     }
-}
+      
+    }}

@@ -1,7 +1,11 @@
 package Projekt2;
 
 import javax.swing.*;
+import javax.swing.text.JTextComponent;
+
 import java.awt.Color;
+
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -16,6 +20,7 @@ import java.awt.event.ActionListener;
         private String command;
         private boolean gotCommand;
         private JButton button;
+		private Object showRoom;
         static JLabel text = new JLabel();
 
 
@@ -57,12 +62,17 @@ import java.awt.event.ActionListener;
 
         public String getCommand() {
             if (this.gotCommand) {
+            	this.gotCommand = false;
                 return this.command;
             }
             return "-1";
 
         }
-
+        public void setShowRoom(String roomDescription){
+            ((JTextComponent) this.showRoom).setText(roomDescription);
+         }
+        
+        
         public void setShowRoom1(String roomDescription) {
             this.Room1.setText(roomDescription);
         }
@@ -80,7 +90,7 @@ import java.awt.event.ActionListener;
         }
 
         public void setShowInventory(Inventory b) {
-            this.inventory.setText("You are Ola, Theres is 3 NPC´s (S,J,J) Check your console in the background to know there postion"+ "\n" + "Inventory:" + "\n" + b.toString());
+            this.inventory.setText("You are Ola, Theres is 3 NPC´s (S,J,J) Check your console in the background to know there postion"+ "\n" + "Inventory:" + b.toString());
         }
 
         public void setShowPlayer(Person p, Room room, int position) {
@@ -148,7 +158,7 @@ import java.awt.event.ActionListener;
         }
 
         public void setMessage(String string) {
-            text.setText("Rooms are [1-4] Pick up [Take + Item] Leave [Drop + item] Room your in = Color of this box");
+            text.setText("Rooms are [1-4] Pick up [take + Item] Leave [drop + item] Room your in = Color of this box");
 		}
 
 

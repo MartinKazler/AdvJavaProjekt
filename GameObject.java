@@ -1,6 +1,5 @@
 package Projekt2;
 
-
 public class GameObject {
     private String name;
     boolean moveable;

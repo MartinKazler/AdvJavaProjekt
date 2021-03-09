@@ -1,13 +1,14 @@
 package Projekt2;
 
+
 public abstract class Npc {
     String name;
     Inventory inventory;
     Gui gui;
-    public Npc(String name,Gui k){
-        this.gui = k;
+    public Npc(String name,Gui g){
+        this.gui = g;
         this.name = name;
-        this.inventory = new Inventory(1);
+        this.inventory = new Inventory(1,gui);
     }
 
     public Inventory getInventory(){
